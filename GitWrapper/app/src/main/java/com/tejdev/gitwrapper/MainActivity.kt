@@ -3,6 +3,7 @@ package com.tejdev.gitwrapper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.tejdev.gitwrapper.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,20 +18,34 @@ class MainActivity : AppCompatActivity() {
         binding =ActivityMainBinding.inflate(layoutInflater)
         val view =binding.root
         setContentView(view)
-        getData()
-
+//        getData()
+        binding.btnusersearch.setOnClickListener {
+            getData()
+        }
 
     }
 
-    fun getData(){
-        RetrofitIntance.apiInterface.getData("TejPrakash18").enqueue(object : Callback<DataModel?> {
+    private fun getData(){
+        val username = binding.userinputid.editableText.toString()
+        RetrofitIntance.apiInterface?.getData(username)?.enqueue(object : Callback<DataModel?> {
             override fun onResponse(call: Call<DataModel?>, response: Response<DataModel?>) {
                 if (response.isSuccessful){
-                    var bio = response.body()?.bio
-                    binding.username.text = "Hey $bio"
+
+                    val name = response.body()?.name
+                    binding.name.text = "$name"
+
+                    val username = response.body()?.login
+                    binding.username.text = "$username"
+
+                    val bio = response.body()?.bio
+                    binding.bio.text = "$bio"
+
+                    val url = response.body()?.avatar_url
+                    Glide.with(this@MainActivity).load(url).into(binding.profileimg)
+
                 }
                 else{
-                    binding.username.text = "Sorry, there is no response"
+                    binding.name.text = "Sorry, there is no response"
                 }
 
             }
