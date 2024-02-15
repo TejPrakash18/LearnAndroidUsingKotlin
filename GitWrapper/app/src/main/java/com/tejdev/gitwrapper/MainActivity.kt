@@ -23,11 +23,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getData(){
-        RetrofitIntance.apiInterface.getData().enqueue(object : Callback<DataModel?> {
+        RetrofitIntance.apiInterface.getData("TejPrakash18").enqueue(object : Callback<DataModel?> {
             override fun onResponse(call: Call<DataModel?>, response: Response<DataModel?>) {
                 if (response.isSuccessful){
-                    var loction = response.body()?.author
-                    binding.username.text = "Hey $loction"
+                    var bio = response.body()?.bio
+                    binding.username.text = "Hey $bio"
                 }
                 else{
                     binding.username.text = "Sorry, there is no response"

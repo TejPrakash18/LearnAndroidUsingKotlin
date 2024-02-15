@@ -5,9 +5,15 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ApiInterface {
+
+    @GET("/users/{username}")
+    fun getData(@Path("username") username: String): Call<DataModel>
+
 //    @GET("\"/users/{username}\"")
 //    fun getData(@Path("username") username: String): Call<DataModel>
-@GET("/gimme")
-fun getData(): Call<DataModel>
+
+
+//@GET("/gimme")
+//fun getData(): Call<DataModel>
 
 }
