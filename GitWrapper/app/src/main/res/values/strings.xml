@@ -2,4 +2,9 @@
     <string name="app_name">GitWrapper</string>
     <string name="username">Username</string>
     <string name="search">Search</string>
+    <string name="share">Share</string>
+    <string name="profile">Profile</string>
+    <string name="repo">Repository</string>
+    <string name="follower">Followers</string>
+    <string name="followings">Followings</string>
 </resources>

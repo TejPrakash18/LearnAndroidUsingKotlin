@@ -43,6 +43,9 @@ class MainActivity : AppCompatActivity() {
                     val url = response.body()?.avatar_url
                     Glide.with(this@MainActivity).load(url).into(binding.profileimg)
 
+                    val repo = response.body()?.public_repos
+                    binding.repo.text = repo.toString()
+
                 }
                 else{
                     binding.name.text = "Sorry, there is no response"
