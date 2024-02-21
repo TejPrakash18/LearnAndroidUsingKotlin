@@ -4,13 +4,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitIntance {
-    private const val BASE_URL = "https://api.github.com"
-
-//        "https://meme-api.com/"
-//        "https://api.github.com/"
+    private const val baseUrl = "https://api.dictionaryapi.dev/api/v2/entries/"
 
     private val RetrofitInstance by lazy{
-        Retrofit.Builder().baseUrl(BASE_URL)
+        Retrofit.Builder().baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
