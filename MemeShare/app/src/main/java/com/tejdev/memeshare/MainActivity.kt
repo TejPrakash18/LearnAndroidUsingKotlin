@@ -4,10 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
+
 import com.bumptech.glide.Glide
 import com.tejdev.memeshare.databinding.ActivityMainBinding
 
@@ -46,11 +44,11 @@ class MainActivity : AppCompatActivity() {
         // Request a string response from the provided URL.
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
-            Response.Listener { response ->
-                   val url = response.getString("url")
+            { response ->
+                       val url = response.getString("url")
                 Glide.with(this).load(url).into(binding.imageMeme)
             },
-            Response.ErrorListener { error ->
+            { _ ->
                 // TODO: Handle error
             }
         )

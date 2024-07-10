@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                     val name = response.body()?.name
                     binding.name.text = "$name"
 
+
                     val username = response.body()?.login
                     binding.username.text = "$username"
 
@@ -46,6 +47,12 @@ class MainActivity : AppCompatActivity() {
                     val repo = response.body()?.public_repos
                     binding.repo.text = repo.toString()
 
+                    val follower = response.body()?.followers
+                    binding.follower.text = follower.toString()
+
+                    val following = response.body()?.following
+                    binding.following.text = following.toString()
+
                 }
                 else{
                     binding.name.text = "Sorry, there is no response"
@@ -57,6 +64,11 @@ class MainActivity : AppCompatActivity() {
                Toast.makeText(this@MainActivity,t.localizedMessage,Toast.LENGTH_LONG).show()
             }
         })
+
+
+
+
+
 
     }
 }
